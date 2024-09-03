@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%} Programación Web II {% endblock %}</title>
+    {%load static %}
+    <link rel="stylesheet" href="{% static 'mensajes/styles.css' %}">
+</head>
+<body>
+    <header>
+        {% block header %}{% include "navbar.html" %}{% endblock %}
+    </header>
+
+    <div class="content">
+        {%block content%}{%endblock%}
+    </div>
+
+    <footer>
+        <p>Distributed by: Viento Impresiones's</p>
+    </footer>
+
+</body>
+</html>
