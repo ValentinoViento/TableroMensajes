@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{%block title%} Mensajes para eliminar {%endblock%}
+
+{%block header%}{%endblock%}
+
+{%block content%}
+    <ul>
+        {% for mensaje in mensajes %}
+        <li>
+            De: <b>{{ mensaje.remitente }}</b> 
+            Para: <b>{{ mensaje.destinatario }}</b> 
+            <br>{{ mensaje.textoMensaje }}
+            <br><b>Fecha enviado</b> {{ mensaje.fechaEnvio }}<br><br>
+        </li>
+        {% endfor %}
+    </ul>
+{%endblock%}
