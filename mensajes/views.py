@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from .models import Mensaje
 from django.http import HttpRequest, HttpResponse
+from .forms import MensajeForm
 
 
 
@@ -23,20 +24,13 @@ def ver_mensajes(request):
     return render(request, 'mensaje_recibido_enviado.html', {'mensajes': mensajes})
 
 
-
-class MensajeView(View):
-    def post(self, request):
-        remitente = request.POST.get('remitente')
-        destinatario = request.POST.get('destinatario')
-        textoMensaje = request.POST.get('textoMensaje')
-        
-        if Mensaje:
-            mensaje = Mensaje(remitente=remitente, destinatario=destinatario, textoMensaje=textoMensaje)
-            mensaje.save()
-            return HttpResponse('El mensaje fue guardado', status = 201)
-        else:
-            return HttpResponse('Los datos en el mensaje son incorrectos', status = 400)    
-  
+def crear_mensaje(request):
+    if request.method == 'POST':
+        form = MensajeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('eliminado')
+    return render(request, 'eliminar_mensaje.html', {'form': form})
         
 def home_view(request):
     return render(request, 'home.html')

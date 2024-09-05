@@ -8,6 +8,8 @@
     <ul>
         {% for mensaje in mensajes %}
         <li>
+            <input type="hidden" name="mensaje_id" value="{{ mensaje.id }}">
+            <input type="checkbox" name="seleccionar"> 
             De: <b>{{ mensaje.remitente }}</b> 
             Para: <b>{{ mensaje.destinatario }}</b> 
             <br>{{ mensaje.textoMensaje }}

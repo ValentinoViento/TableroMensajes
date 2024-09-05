@@ -6,5 +6,4 @@ urlpatterns = [
     path('mensajes/', views.mensajes_view, name="mensajes"),
     path('crear/', views.crear_view, name="crear"),
     path('eliminar/', views.eliminar_view, name='eliminar'),
-    path('creación', views.MensajeView.as_view(), name='creación'),
 ]

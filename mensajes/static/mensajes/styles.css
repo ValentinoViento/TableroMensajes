@@ -2,3 +2,10 @@ header {
     background-color: lightgray;
     padding: 20px;
 }
+
+nav ul {
+    list-style-type: none;
+    padding:0;
+    margin:o;
+    display: flex;
+}
