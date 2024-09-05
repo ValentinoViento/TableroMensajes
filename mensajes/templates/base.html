@@ -9,16 +9,19 @@
 </head>
 <body>
     <header>
-        {% block header %}{% include "navbar.html" %}{% endblock %}
+        {% block header %}{% endblock %}
     </header>
-
+    {% include "navbar.html" %}
     <div class="content">
         {%block content%}{%endblock%}
     </div>
+
 
     <footer>
         <p>Distributed by: Viento Impresiones's</p>
     </footer>
 
 </body>
+
+
 </html>

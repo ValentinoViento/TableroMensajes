@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{%block title%} Crear mensajes {%endblock%}
+
+{%block header%}<script src="/static/mensajes/function.js"></script>
+{%endblock%}
+
+{%block content%}
+    <form method="POST">
+        {% csrf_token %}
+
+        <label for="remitente">Remitente</label><br>
+        <input type="text" id="remitente" name="remitente" placeholder="usuario" required><br><br>
+
+        <label for="destinatario">Destinatario </label><br>
+        <textarea id="destinatario" name="destinatario" placeholder="jccasco" required></textarea><br><br>
+
+        <p><label for="textoMensaje">Mensaje </label><br>
+        <textarea id="textoMensaje" name="textoMensaje" maxlength="200" cols="30" rows="10" placeholder="Máximo 200 caracteres" required></textarea>
+        <br><br>
+      
+        <input type="submit" value="Crear Mensaje">
+    </form>
+
+  
+{%endblock%}
+
+
