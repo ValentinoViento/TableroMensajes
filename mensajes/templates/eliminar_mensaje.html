@@ -5,16 +5,19 @@
 {%block header%}{%endblock%}
 
 {%block content%}
-    <ul>
-        {% for mensaje in mensajes %}
-        <li>
-            <input type="hidden" name="mensaje_id" value="{{ mensaje.id }}">
-            <input type="checkbox" name="seleccionar"> 
-            De: <b>{{ mensaje.remitente }}</b> 
-            Para: <b>{{ mensaje.destinatario }}</b> 
-            <br>{{ mensaje.textoMensaje }}
-            <br><b>Fecha enviado</b> {{ mensaje.fechaEnvio }}<br><br>
-        </li>
-        {% endfor %}
-    </ul>
+    <form method="POST">
+        {% csrf_token %}
+        <ul>
+            {% for mensaje in mensajes %}
+            <li>
+                <input type="checkbox" name="seleccionar" value="{{ mensaje.id }}">
+                De: <b>{{ mensaje.remitente }}</b> 
+                Para: <b>{{ mensaje.destinatario }}</b> 
+                <br>{{ mensaje.textoMensaje }}
+                <br><b>Fecha enviado</b> {{ mensaje.fechaEnvio }}<br><br>
+            </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">Eliminar seleccionado/s</button>
+    </form>
 {%endblock%}

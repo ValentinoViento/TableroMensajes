@@ -4,23 +4,33 @@
 
 {% block header %}{% endblock header %}
 
-{%block content%}
-
-    <form method="GET"> 
-        <input type="radio" name="mensaje_remitente" value="remitente"> Enviados
-        <input type="radio" name="mensaje_destinatario" value="destinatario"> Recibidos
-        <button type="submit">Filtrar</button>
-    </form>
-
-    <ul>
-        {% for mensaje in mensajes %}
-        <li>
-            De: <b>{{ mensaje.remitente }}</b> 
-            Para: <b>{{ mensaje.destinatario }}</b> 
-            <br>{{ mensaje.textoMensaje }}
-            <br><b>Fecha enviado</b> {{ mensaje.fechaEnvio }}<br><br>
-        </li>
+{% block content %}
+<form method="GET">
+    <select name="remitente_filtro">
+        <option value="">Enviados por</option>
+        {% for remitente in remitentes %}
+            <option value="{{ remitente }}">{{ remitente }}</option>
         {% endfor %}
-    </ul>
+    </select>
 
-{%endblock%}
+    <select name="destinatario_filtro">
+        <option value="">Recibidos por</option>  
+        {% for destinatario in destinatarios %}
+            <option value="{{ destinatario }}">{{ destinatario }}</option>
+        {% endfor %}
+    </select>   
+
+    <button type="submit">Filtrar</button>
+</form>
+
+<ul>
+    {% for mensaje in mensajes %}
+    <li>
+        De: <b>{{ mensaje.remitente }}</b> 
+        Para: <b>{{ mensaje.destinatario }}</b> 
+        <br>{{ mensaje.textoMensaje }}
+        <br><b>Fecha enviado</b> {{ mensaje.fechaEnvio }}<br><br>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

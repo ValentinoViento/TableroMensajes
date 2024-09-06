@@ -1,11 +1,23 @@
 header {
     background-color: lightgray;
-    padding: 20px;
+    padding: 10px;
 }
 
 nav ul {
     list-style-type: none;
-    padding:0;
-    margin:o;
     display: flex;
+    justify-content: center;    
+    height: 50%;
+    width: 80%;
+    margin: auto;
+    font-family: sans-serif;
+}
+
+nav li {
+    margin: 10px;
+}
+
+
+body {
+    background-color: aqua;
 }
