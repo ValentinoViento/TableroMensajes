@@ -5,32 +5,47 @@
 {% block header %}{% endblock header %}
 
 {% block content %}
+
 <form method="GET">
-    <select name="remitente_filtro">
-        <option value="">Enviados por</option>
-        {% for remitente in remitentes %}
-            <option value="{{ remitente }}">{{ remitente }}</option>
-        {% endfor %}
-    </select>
+    <table>
+        <tr>
+            <td>
+            <h3>Enviados</h3>
+            <select name="remitente_filtro">
+                <option value="">-----</option>
+                {% for remitente in remitentes %}
+                    <option value="{{ remitente }}" {% if remitente == request.GET.remitente_filtro %}selected{% endif %}>{{ remitente }}</option>
+                {% endfor %}
+            </select>   
+            </td>
 
-    <select name="destinatario_filtro">
-        <option value="">Recibidos por</option>  
-        {% for destinatario in destinatarios %}
-            <option value="{{ destinatario }}">{{ destinatario }}</option>
-        {% endfor %}
-    </select>   
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>  <!-- tabla con espacio para separar ambos filtros-->
+                
+            <td>
+            <h3>Recibidos</h3>
+            <select name="destinatario_filtro">
+                <option value="">-----</option>  
+                {% for destinatario in destinatarios %}
+                    <option value="{{ destinatario }}" {% if destinatario == request.GET.destinatario_filtro %}selected{% endif %}>{{ destinatario }}</option>
+                {% endfor %}
+            </select>
+            </td>
+        </tr>
+    </table>         
 
-    <button type="submit">Filtrar</button>
+    <br><button type="submit" style="width: 80px; height: 35px; font-family: Sans-Seriff;"><b>Filtrar</b></button>
 </form>
 
 <ul>
     {% for mensaje in mensajes %}
     <li>
-        De: <b>{{ mensaje.remitente }}</b> 
-        Para: <b>{{ mensaje.destinatario }}</b> 
-        <br>{{ mensaje.textoMensaje }}
+        De: <b>{{ mensaje.remitente |capfirst}}</b> 
+        Para: <b>{{ mensaje.destinatario |capfirst}}</b> 
+        <br>{{ mensaje.textoMensaje |capfirst}}
         <br><b>Fecha enviado</b> {{ mensaje.fechaEnvio }}<br><br>
     </li>
+    {% empty %}
+        <li>No hay mensajes que coincidan con los filtros aplicados.</li>
     {% endfor %}
 </ul>
 {% endblock %}
