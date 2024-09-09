@@ -14,7 +14,7 @@
             <select name="remitente_filtro">
                 <option value="">-----</option>
                 {% for remitente in remitentes %}
-                    <option value="{{ remitente }}" {% if remitente == request.GET.remitente_filtro %}selected{% endif %}>{{ remitente }}</option>
+                    <option value="{{ remitente }}" {% if remitente == request.GET.remitente_filtro %}selected{% endif %}>{{ remitente }}</option><!--Este código ayuda y determina que la opción seleccionada quede fija, en caso de querer utilizar ambos filtros en simultáneo-->
                 {% endfor %}
             </select>   
             </td>
@@ -26,14 +26,14 @@
             <select name="destinatario_filtro">
                 <option value="">-----</option>  
                 {% for destinatario in destinatarios %}
-                    <option value="{{ destinatario }}" {% if destinatario == request.GET.destinatario_filtro %}selected{% endif %}>{{ destinatario }}</option>
+                    <option value="{{ destinatario }}" {% if destinatario == request.GET.destinatario_filtro %}selected{% endif %}>{{ destinatario }}</option> 
                 {% endfor %}
             </select>
             </td>
         </tr>
     </table>         
 
-    <br><button type="submit" style="width: 80px; height: 35px; font-family: Sans-Seriff;"><b>Filtrar</b></button>
+    <br><button type="submit" style="width: 60px; height: 25px; font-family: Sans-Seriff;"><b>Filtrar</b></button>
 </form>
 
 <ul>
