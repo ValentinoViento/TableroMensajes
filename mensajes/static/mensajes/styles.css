@@ -21,3 +21,17 @@ nav li {
 body {
     background-color: aqua;
 }
+
+
+
+table {
+    width: 500px;
+    border-collapse: collapse;
+}
+
+td, tr {
+    display: inline-table   ;
+    border: 5px;
+    padding: 70px;
+    margin-right: 70px;
+}

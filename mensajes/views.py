@@ -7,17 +7,28 @@ from .forms import MensajeForm
 
 
 def ver_mensajes(request):
+    # Obtener los filtros
     remitente_filtro = request.GET.get('remitente_filtro')
     destinatario_filtro = request.GET.get('destinatario_filtro')
 
+    # Obtener todos los mensajes inicialmente
     mensajes = Mensaje.objects.all()
 
+    # Aplicar filtros
     if remitente_filtro:
         mensajes = mensajes.filter(remitente=remitente_filtro)
     if destinatario_filtro:
         mensajes = mensajes.filter(destinatario=destinatario_filtro)
 
-    return render(request, 'mensaje_recibido_enviado.html', {'mensajes': mensajes})
+    # Obtener remitentes y destinatarios únicos para el formulario
+    remitentes = Mensaje.objects.values_list('remitente', flat=True).distinct()
+    destinatarios = Mensaje.objects.values_list('destinatario', flat=True).distinct()
+
+    # Pasar los mensajes y las opciones de filtro al template
+    return render(request, 'mensaje_recibido_enviado.html', {
+        'mensajes': mensajes,
+        'remitentes': remitentes,
+        'destinatarios': destinatarios,})
 
 
 
