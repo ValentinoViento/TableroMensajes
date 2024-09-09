@@ -8,5 +8,5 @@ class Mensaje(models.Model):
     fechaEnvio = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.remitente} -> {self.destinatario}: {self.textoMensaje[:20]}"
+        return f"{self.remitente} -> {self.destinatario}: {self.textoMensaje[:200]}"
     

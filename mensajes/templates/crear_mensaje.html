@@ -7,16 +7,16 @@
 
 {%block content%}
     <form method="POST">
-        {% csrf_token %}
+        {% csrf_token %}    <!--token para permitir el uso-->
 
-        <label for="remitente">Remitente</label><br>
+        <label for="remitente"><b>Remitente</b></label><br>
         <input type="text" id="remitente" name="remitente" placeholder="usuario" required><br><br>
 
-        <label for="destinatario">Destinatario </label><br>
+        <label for="destinatario"><b>Destinatario</b> </label><br>
         <textarea id="destinatario" name="destinatario" placeholder="jccasco" required></textarea><br><br>
 
-        <p><label for="textoMensaje">Mensaje </label><br>
-        <textarea id="textoMensaje" name="textoMensaje" maxlength="200" cols="30" rows="10" placeholder="Máximo 200 caracteres" required></textarea>
+        <p><label for="textoMensaje"><b>Mensaje</b></label><br>
+        <textarea id="textoMensaje" name="textoMensaje" maxlength="500" cols="30" rows="10" placeholder="Máximo 500 caracteres" required></textarea>
         <br><br>
       
         <button type="submit" style="width: 130px; height: 45px; font-family: Sans-Seriff;"><b>Crear Mensaje</b></button>
