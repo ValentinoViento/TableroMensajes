@@ -41,11 +41,11 @@
     <li>
         De: <b>{{ mensaje.remitente |capfirst}}</b> 
         Para: <b>{{ mensaje.destinatario |capfirst}}</b> 
-        <br>{{ mensaje.textoMensaje |capfirst}}
-        <br><b>Fecha enviado</b> {{ mensaje.fechaEnvio }}<br><br>
+        <br>    <br>{{ mensaje.textoMensaje |capfirst}}
+        <br><br><b>Fecha enviado</b> {{ mensaje.fechaEnvio }}<br><br>
     </li>
     {% empty %}
-        <li>No hay mensajes que coincidan con los filtros aplicados.</li>
+        <li>No hay ningún mensaje registrado.</li>
     {% endfor %}
 </ul>
 {% endblock %}
