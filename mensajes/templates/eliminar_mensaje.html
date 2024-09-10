@@ -10,11 +10,11 @@
         <ul>
             {% for mensaje in mensajes %}
             <li>
-                <input type="checkbox" name="seleccionar" value="{{ mensaje.id }}">     <!--checkbox para seleccionar 1 o más mensajes-->
+                <input type="checkbox" name="seleccionar" value="{{ mensaje.id }}">     <!--checkbox para seleccionar 1 o más mensajes. Contiene un "id" para identificar cada mensaje-->
                 De: <b>{{ mensaje.remitente |capfirst}}</b> 
-                Para: <b>{{ mensaje.destinatario |capfirst}}</b> 
-                <br>{{ mensaje.textoMensaje |capfirst}}
-                <br><b>Fecha enviado</b> {{ mensaje.fechaEnvio }}<br><br>
+        Para: <b>{{ mensaje.destinatario |capfirst}}</b> 
+        <br>    <br>{{ mensaje.textoMensaje |capfirst}}
+        <br><br><b>Fecha enviado</b> {{ mensaje.fechaEnvio }}<br><br>
             </li>
             {% endfor %}
         </ul>
